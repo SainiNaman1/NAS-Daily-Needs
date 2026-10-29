@@ -243,33 +243,15 @@ QLabel.BadgeOutOfStock, QLabel[class="BadgeOutOfStock"] {
     font-size: 11px;
     font-weight: 600;
 }
-    color: #ef4444;
-    border: 1px solid #ef4444;
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-size: 11px;
-    font-weight: 600;
+
+/* Modal Dialogs */
+QDialog {
+    background-color: #ffffff;
+    color: #0f172a;
 }
-    padding: 2px 6px;
-    font-size: 11px;
-    font-weight: 600;
-}
-QLabel.BadgeLowStock {
-    background-color: rgba(245, 158, 11, 0.2);
-    color: #f59e0b;
-    border: 1px solid #f59e0b;
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-size: 11px;
-    font-weight: 600;
-}
-QLabel.BadgeOutOfStock {
-    background-color: rgba(239, 68, 68, 0.2);
-    color: #ef4444;
-    border: 1px solid #ef4444;
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-size: 11px;
+QDialog QLabel {
+    color: #0f172a;
+    font-size: 13px;
     font-weight: 600;
 }
 """
@@ -284,8 +266,53 @@ class ProductDialog(QDialog):
         super().__init__(parent)
         self.product = product
         self.setWindowTitle("Edit Product" if product else "Add New Product")
-        self.resize(380, 280)
-        self.setStyleSheet(ENTERPRISE_STYLE)
+        self.resize(420, 310)
+        self.setStyleSheet("""
+            QDialog {
+                background-color: #ffffff;
+            }
+            QLabel {
+                color: #0f172a;
+                font-size: 13px;
+                font-weight: 600;
+            }
+            QLineEdit, QSpinBox, QDoubleSpinBox {
+                background-color: #f8fafc;
+                border: 1px solid #cbd5e1;
+                border-radius: 6px;
+                padding: 8px 12px;
+                color: #0f172a;
+                font-size: 13px;
+            }
+            QLineEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus {
+                border: 1px solid #2563eb;
+                background-color: #ffffff;
+            }
+            QPushButton[class="PrimaryBtn"] {
+                background-color: #2563eb;
+                color: #ffffff;
+                font-size: 13px;
+                font-weight: bold;
+                padding: 9px 20px;
+                border: none;
+                border-radius: 6px;
+            }
+            QPushButton[class="PrimaryBtn"]:hover {
+                background-color: #1d4ed8;
+            }
+            QPushButton[class="SecondaryBtn"] {
+                background-color: #f1f5f9;
+                color: #334155;
+                font-size: 13px;
+                font-weight: 500;
+                padding: 9px 18px;
+                border: 1px solid #cbd5e1;
+                border-radius: 6px;
+            }
+            QPushButton[class="SecondaryBtn"]:hover {
+                background-color: #e2e8f0;
+            }
+        """)
 
         layout = QVBoxLayout(self)
         form = QFormLayout()
@@ -350,14 +377,33 @@ class UPIQRDialog(QDialog):
     def __init__(self, parent=None, amount=0.0, bill_no=101):
         super().__init__(parent)
         self.setWindowTitle("Scan & Pay via UPI")
-        self.resize(340, 420)
-        self.setStyleSheet(ENTERPRISE_STYLE)
+        self.resize(360, 440)
+        self.setStyleSheet("""
+            QDialog {
+                background-color: #ffffff;
+            }
+            QLabel {
+                color: #0f172a;
+            }
+            QPushButton[class="SuccessBtn"] {
+                background-color: #10b981;
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: bold;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 8px;
+            }
+            QPushButton[class="SuccessBtn"]:hover {
+                background-color: #059669;
+            }
+        """)
 
         layout = QVBoxLayout(self)
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         title = QLabel("UPI Instant Checkout")
-        title.setStyleSheet("font-size: 16px; font-weight: bold; color: #38bdf8;")
+        title.setStyleSheet("font-size: 16px; font-weight: bold; color: #2563eb;")
         layout.addWidget(title, alignment=Qt.AlignmentFlag.AlignCenter)
 
         amt_label = QLabel(f"Amount: Rs. {amount:.2f}")
@@ -380,11 +426,11 @@ class UPIQRDialog(QDialog):
 
         qr_label = QLabel()
         qr_label.setPixmap(pixmap)
-        qr_label.setStyleSheet("border: 4px solid #ffffff; border-radius: 8px;")
+        qr_label.setStyleSheet("border: 2px solid #e2e8f0; border-radius: 8px; padding: 4px;")
         layout.addWidget(qr_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
         vpa_label = QLabel(f"UPI ID: {vpa}\nSupported: Google Pay, PhonePe, Paytm, BHIM")
-        vpa_label.setStyleSheet("color: #94a3b8; font-size: 11px; text-align: center; margin-top: 6px;")
+        vpa_label.setStyleSheet("color: #64748b; font-size: 11px; text-align: center; margin-top: 6px;")
         vpa_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(vpa_label)
 
@@ -401,7 +447,38 @@ class InvoiceDialog(QDialog):
         self.bill = bill_data
         self.setWindowTitle(f"Invoice - Bill #{bill_data['BillNo']}")
         self.resize(460, 600)
-        self.setStyleSheet(ENTERPRISE_STYLE)
+        self.setStyleSheet("""
+            QDialog {
+                background-color: #f8fafc;
+            }
+            QLabel {
+                color: #0f172a;
+            }
+            QPushButton[class="PrimaryBtn"] {
+                background-color: #2563eb;
+                color: #ffffff;
+                font-size: 13px;
+                font-weight: bold;
+                padding: 8px 18px;
+                border: none;
+                border-radius: 6px;
+            }
+            QPushButton[class="PrimaryBtn"]:hover {
+                background-color: #1d4ed8;
+            }
+            QPushButton[class="SecondaryBtn"] {
+                background-color: #ffffff;
+                color: #334155;
+                font-size: 13px;
+                font-weight: 500;
+                padding: 8px 16px;
+                border: 1px solid #cbd5e1;
+                border-radius: 6px;
+            }
+            QPushButton[class="SecondaryBtn"]:hover {
+                background-color: #f1f5f9;
+            }
+        """)
 
         layout = QVBoxLayout(self)
 
@@ -992,6 +1069,11 @@ class InventoryView(QWidget):
         self.table.setColumnCount(6)
         self.table.setHorizontalHeaderLabels(["PID", "Product Name", "Unit Price (Rs)", "Stock", "Inventory Value", "Status"])
         self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        self.table.setColumnWidth(0, 80)
+        self.table.setColumnWidth(2, 110)
+        self.table.setColumnWidth(3, 75)
+        self.table.setColumnWidth(4, 130)
+        self.table.setColumnWidth(5, 110)
         self.table.verticalHeader().setDefaultSectionSize(42)
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
