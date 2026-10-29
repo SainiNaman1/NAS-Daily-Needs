@@ -28,36 +28,36 @@ import db
 
 
 # ==============================================================================
-# Enterprise Dark Modern Stylesheet (QSS)
+# Enterprise Modern Light Stylesheet (QSS)
 # ==============================================================================
 ENTERPRISE_STYLE = """
 QMainWindow {
-    background-color: #0f172a;
+    background-color: #f8fafc;
 }
 QWidget {
     font-family: 'Segoe UI', Arial, sans-serif;
-    color: #f8fafc;
+    color: #0f172a;
 }
 
 /* Sidebar */
 #Sidebar {
-    background-color: #1e293b;
-    border-right: 1px solid #334155;
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
 }
 #StoreLogo {
     font-size: 18px;
     font-weight: bold;
-    color: #38bdf8;
+    color: #2563eb;
     padding: 10px 5px 2px 5px;
 }
 #StoreTagline {
     font-size: 11px;
-    color: #94a3b8;
+    color: #64748b;
     padding: 0px 5px 15px 5px;
 }
 QPushButton.NavBtn, QPushButton[class="NavBtn"] {
     background-color: transparent;
-    color: #cbd5e1;
+    color: #334155;
     font-size: 14px;
     font-weight: 500;
     text-align: left;
@@ -67,8 +67,8 @@ QPushButton.NavBtn, QPushButton[class="NavBtn"] {
     margin: 4px 10px;
 }
 QPushButton.NavBtn:hover, QPushButton[class="NavBtn"]:hover {
-    background-color: #334155;
-    color: #ffffff;
+    background-color: #f1f5f9;
+    color: #0f172a;
 }
 QPushButton.NavBtn:checked, QPushButton[class="NavBtn"]:checked {
     background-color: #2563eb;
@@ -78,88 +78,90 @@ QPushButton.NavBtn:checked, QPushButton[class="NavBtn"]:checked {
 
 /* Content Area */
 #ContentArea {
-    background-color: #0f172a;
+    background-color: #f8fafc;
 }
 QFrame.Card, QFrame[class="Card"] {
-    background-color: #1e293b;
-    border: 1px solid #334155;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: 10px;
     padding: 14px;
 }
 QFrame.KPICard, QFrame[class="KPICard"] {
-    background-color: #1e293b;
-    border: 1px solid #334155;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: 10px;
     padding: 16px;
 }
 QLabel.KPITitle, QLabel[class="KPITitle"] {
     font-size: 12px;
     font-weight: 600;
-    color: #94a3b8;
+    color: #64748b;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 QLabel.KPIValue, QLabel[class="KPIValue"] {
     font-size: 24px;
     font-weight: bold;
-    color: #ffffff;
+    color: #0f172a;
     margin-top: 4px;
 }
 QLabel.KPISubtext, QLabel[class="KPISubtext"] {
     font-size: 11px;
-    color: #38bdf8;
+    color: #2563eb;
 }
 
 /* Headings */
 QLabel.PageTitle, QLabel[class="PageTitle"] {
     font-size: 20px;
     font-weight: bold;
-    color: #f8fafc;
+    color: #0f172a;
 }
 QLabel.SectionTitle, QLabel[class="SectionTitle"] {
     font-size: 15px;
     font-weight: 600;
-    color: #e2e8f0;
+    color: #0f172a;
 }
 
 /* Form Inputs */
 QLineEdit, QSpinBox, QDoubleSpinBox, QComboBox {
-    background-color: #0f172a;
-    border: 1px solid #334155;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
     border-radius: 6px;
     padding: 8px 12px;
-    color: #f8fafc;
+    color: #0f172a;
     font-size: 13px;
 }
 QLineEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QComboBox:focus {
-    border: 1px solid #38bdf8;
+    border: 1px solid #2563eb;
+    background-color: #ffffff;
 }
 
 /* Tables */
 QTableWidget {
-    background-color: #1e293b;
-    border: 1px solid #334155;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: 8px;
-    gridline-color: #334155;
-    color: #f1f5f9;
+    gridline-color: #f1f5f9;
+    color: #1e293b;
     font-size: 13px;
-    selection-background-color: #2563eb;
-    selection-color: #ffffff;
+    selection-background-color: #eff6ff;
+    selection-color: #1d4ed8;
 }
 QTableWidget::item {
     padding: 4px 8px;
+    border-bottom: 1px solid #f1f5f9;
 }
 QTableWidget::item:hover {
-    background-color: #334155;
+    background-color: #f8fafc;
 }
 QHeaderView::section {
-    background-color: #0f172a;
-    color: #94a3b8;
+    background-color: #f8fafc;
+    color: #475569;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: bold;
     padding: 8px;
     border: none;
-    border-bottom: 1px solid #334155;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 /* Action Buttons */
@@ -200,22 +202,23 @@ QPushButton.DangerBtn:hover, QPushButton[class="DangerBtn"]:hover {
     background-color: #dc2626;
 }
 QPushButton.SecondaryBtn, QPushButton[class="SecondaryBtn"] {
-    background-color: #334155;
-    color: #f8fafc;
+    background-color: #f1f5f9;
+    color: #334155;
     font-size: 13px;
     font-weight: 500;
     padding: 6px 12px;
-    border: none;
+    border: 1px solid #cbd5e1;
     border-radius: 6px;
 }
 QPushButton.SecondaryBtn:hover, QPushButton[class="SecondaryBtn"]:hover {
-    background-color: #475569;
+    background-color: #e2e8f0;
+    color: #0f172a;
 }
 
 /* Badges */
 QLabel.BadgeInStock, QLabel[class="BadgeInStock"] {
-    background-color: rgba(16, 185, 129, 0.2);
-    color: #10b981;
+    background-color: rgba(16, 185, 129, 0.12);
+    color: #059669;
     border: 1px solid #10b981;
     border-radius: 4px;
     padding: 2px 6px;
@@ -223,8 +226,8 @@ QLabel.BadgeInStock, QLabel[class="BadgeInStock"] {
     font-weight: 600;
 }
 QLabel.BadgeLowStock, QLabel[class="BadgeLowStock"] {
-    background-color: rgba(245, 158, 11, 0.2);
-    color: #f59e0b;
+    background-color: rgba(245, 158, 11, 0.12);
+    color: #d97706;
     border: 1px solid #f59e0b;
     border-radius: 4px;
     padding: 2px 6px;
@@ -232,7 +235,14 @@ QLabel.BadgeLowStock, QLabel[class="BadgeLowStock"] {
     font-weight: 600;
 }
 QLabel.BadgeOutOfStock, QLabel[class="BadgeOutOfStock"] {
-    background-color: rgba(239, 68, 68, 0.2);
+    background-color: rgba(239, 68, 68, 0.12);
+    color: #dc2626;
+    border: 1px solid #ef4444;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
     color: #ef4444;
     border: 1px solid #ef4444;
     border-radius: 4px;
@@ -596,20 +606,25 @@ class POSView(QWidget):
         self.cart_table.setColumnCount(5)
         self.cart_table.setHorizontalHeaderLabels(["Item", "Price", "Qty", "Total", "Action"])
         self.cart_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
-        self.cart_table.setColumnWidth(4, 75)
+        self.cart_table.setColumnWidth(1, 65)
+        self.cart_table.setColumnWidth(2, 95)
+        self.cart_table.setColumnWidth(3, 75)
+        self.cart_table.setColumnWidth(4, 55)
+        self.cart_table.verticalHeader().setVisible(False)
         self.cart_table.verticalHeader().setDefaultSectionSize(40)
+        self.cart_table.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.cart_table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         right_layout.addWidget(self.cart_table)
 
         # Payment & Summary Frame
         summary_frame = QFrame()
-        summary_frame.setStyleSheet("background-color: #0f172a; border-radius: 8px; padding: 10px;")
+        summary_frame.setStyleSheet("background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;")
         sum_layout = QVBoxLayout(summary_frame)
 
         # Payment Mode radio buttons
         pay_box = QHBoxLayout()
         pay_label = QLabel("Payment:")
-        pay_label.setStyleSheet("font-size: 12px; color: #94a3b8;")
+        pay_label.setStyleSheet("font-size: 12px; font-weight: 600; color: #475569;")
         self.rb_cash = QRadioButton("Cash")
         self.rb_upi = QRadioButton("UPI")
         self.rb_card = QRadioButton("Card")
@@ -640,9 +655,9 @@ class POSView(QWidget):
         # Grand Total Display
         total_box = QHBoxLayout()
         total_lbl = QLabel("GRAND TOTAL:")
-        total_lbl.setStyleSheet("font-size: 16px; font-weight: bold; color: #f8fafc;")
+        total_lbl.setStyleSheet("font-size: 16px; font-weight: bold; color: #0f172a;")
         self.total_val_lbl = QLabel("Rs. 0.00")
-        self.total_val_lbl.setStyleSheet("font-size: 24px; font-weight: bold; color: #10b981;")
+        self.total_val_lbl.setStyleSheet("font-size: 26px; font-weight: bold; color: #10b981;")
         total_box.addWidget(total_lbl)
         total_box.addStretch()
         total_box.addWidget(self.total_val_lbl)
@@ -765,24 +780,51 @@ class POSView(QWidget):
             price_item.setTextAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
             tot_item.setTextAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
 
-            # Quantity control widget
+            # Quantity control widget with clear + and - buttons
             qty_widget = QWidget()
             qty_layout = QHBoxLayout(qty_widget)
             qty_layout.setContentsMargins(0, 0, 0, 0)
-            qty_layout.setSpacing(2)
+            qty_layout.setSpacing(3)
 
             minus_btn = QPushButton("-")
-            minus_btn.setFixedSize(22, 22)
-            minus_btn.setProperty("class", "SecondaryBtn")
+            minus_btn.setFixedSize(26, 26)
+            minus_btn.setStyleSheet("""
+                QPushButton {
+                    background-color: #f1f5f9;
+                    color: #0f172a;
+                    font-size: 16px;
+                    font-weight: bold;
+                    border: 1px solid #cbd5e1;
+                    border-radius: 4px;
+                    padding: 0px;
+                }
+                QPushButton:hover {
+                    background-color: #e2e8f0;
+                }
+            """)
             minus_btn.clicked.connect(lambda checked, idx=row: self.update_qty(idx, -1))
 
             qty_lbl = QLabel(str(item['qty']))
             qty_lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
-            qty_lbl.setFixedWidth(24)
+            qty_lbl.setFixedWidth(26)
+            qty_lbl.setStyleSheet("color: #0f172a; font-weight: bold; font-size: 13px;")
 
             plus_btn = QPushButton("+")
-            plus_btn.setFixedSize(22, 22)
-            plus_btn.setProperty("class", "SecondaryBtn")
+            plus_btn.setFixedSize(26, 26)
+            plus_btn.setStyleSheet("""
+                QPushButton {
+                    background-color: #f1f5f9;
+                    color: #0f172a;
+                    font-size: 16px;
+                    font-weight: bold;
+                    border: 1px solid #cbd5e1;
+                    border-radius: 4px;
+                    padding: 0px;
+                }
+                QPushButton:hover {
+                    background-color: #e2e8f0;
+                }
+            """)
             plus_btn.clicked.connect(lambda checked, idx=row: self.update_qty(idx, 1))
 
             qty_layout.addWidget(minus_btn)
@@ -1080,11 +1122,11 @@ class CustomerCRMView(QWidget):
 
         # Right History Card
         self.history_frame = QFrame()
-        self.history_frame.setStyleSheet("background-color: #0f172a; border-radius: 8px; padding: 12px;")
+        self.history_frame.setStyleSheet("background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;")
         hist_layout = QVBoxLayout(self.history_frame)
 
         self.hist_header = QLabel("Select a customer to view purchase history")
-        self.hist_header.setStyleSheet("font-size: 14px; font-weight: bold; color: #38bdf8;")
+        self.hist_header.setStyleSheet("font-size: 14px; font-weight: bold; color: #0f172a;")
         hist_layout.addWidget(self.hist_header)
 
         self.bills_table = QTableWidget()
@@ -1260,7 +1302,7 @@ class AnalyticsDashboardView(QWidget):
         t_label.setProperty("class", "SectionTitle")
         trend_layout.addWidget(t_label)
 
-        self.trend_figure = Figure(figsize=(5, 3.2), facecolor="#1e293b")
+        self.trend_figure = Figure(figsize=(5, 3.2), facecolor="#ffffff")
         self.trend_canvas = FigureCanvas(self.trend_figure)
         trend_layout.addWidget(self.trend_canvas)
         charts_layout.addWidget(self.trend_card, stretch=6)
@@ -1273,7 +1315,7 @@ class AnalyticsDashboardView(QWidget):
         top_label.setProperty("class", "SectionTitle")
         top_layout.addWidget(top_label)
 
-        self.top_figure = Figure(figsize=(5, 3.2), facecolor="#1e293b")
+        self.top_figure = Figure(figsize=(5, 3.2), facecolor="#ffffff")
         self.top_canvas = FigureCanvas(self.top_figure)
         top_layout.addWidget(self.top_canvas)
         charts_layout.addWidget(self.top_card, stretch=5)
@@ -1319,37 +1361,37 @@ class AnalyticsDashboardView(QWidget):
         # 1. Render Trend Chart
         self.trend_figure.clear()
         ax1 = self.trend_figure.add_subplot(111)
-        ax1.set_facecolor("#0f172a")
+        ax1.set_facecolor("#ffffff")
         days = m['trend_days']
         revs = m['trend_revs']
-        ax1.plot(days, revs, marker='o', color='#38bdf8', linewidth=2.5, markersize=6)
-        ax1.fill_between(days, revs, color='#38bdf8', alpha=0.15)
-        ax1.tick_params(colors='#94a3b8', labelsize=9)
-        ax1.spines['bottom'].set_color('#334155')
-        ax1.spines['left'].set_color('#334155')
+        ax1.plot(days, revs, marker='o', color='#2563eb', linewidth=2.5, markersize=6)
+        ax1.fill_between(days, revs, color='#2563eb', alpha=0.1)
+        ax1.tick_params(colors='#475569', labelsize=9)
+        ax1.spines['bottom'].set_color('#cbd5e1')
+        ax1.spines['left'].set_color('#cbd5e1')
         ax1.spines['top'].set_visible(False)
         ax1.spines['right'].set_visible(False)
-        ax1.grid(True, linestyle='--', alpha=0.15, color='#ffffff')
+        ax1.grid(True, linestyle='--', alpha=0.6, color='#f1f5f9')
         self.trend_figure.tight_layout()
         self.trend_canvas.draw()
 
         # 2. Render Top Products Chart
         self.top_figure.clear()
         ax2 = self.top_figure.add_subplot(111)
-        ax2.set_facecolor("#0f172a")
+        ax2.set_facecolor("#ffffff")
 
         top_p = m['top_products']
         if top_p:
             names = [p['PName'][:14] for p in reversed(top_p)]
             sales = [int(p['sold']) for p in reversed(top_p)]
             bars = ax2.barh(names, sales, color='#10b981', height=0.55)
-            ax2.bar_label(bars, padding=4, color='#ffffff', fontsize=9)
+            ax2.bar_label(bars, padding=4, color='#0f172a', fontsize=9, fontweight='bold')
         else:
-            ax2.text(0.5, 0.5, "No Sales Data Yet", color='#94a3b8', ha='center', va='center')
+            ax2.text(0.5, 0.5, "No Sales Data Yet", color='#64748b', ha='center', va='center')
 
-        ax2.tick_params(colors='#94a3b8', labelsize=9)
-        ax2.spines['bottom'].set_color('#334155')
-        ax2.spines['left'].set_color('#334155')
+        ax2.tick_params(colors='#475569', labelsize=9)
+        ax2.spines['bottom'].set_color('#cbd5e1')
+        ax2.spines['left'].set_color('#cbd5e1')
         ax2.spines['top'].set_visible(False)
         ax2.spines['right'].set_visible(False)
         self.top_figure.tight_layout()
@@ -1415,13 +1457,13 @@ class MainWindow(QMainWindow):
 
         # Database Status Badge
         db_badge = QFrame()
-        db_badge.setStyleSheet("background-color: #0f172a; border-radius: 6px; padding: 8px;")
+        db_badge.setStyleSheet("background-color: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px;")
         db_layout = QHBoxLayout(db_badge)
         db_layout.setContentsMargins(6, 6, 6, 6)
         dot = QLabel("●")
         dot.setStyleSheet("color: #10b981; font-size: 14px;")
         status_txt = QLabel("MySQL Connected\nDatabase: counter")
-        status_txt.setStyleSheet("color: #94a3b8; font-size: 10px;")
+        status_txt.setStyleSheet("color: #475569; font-size: 10px;")
         db_layout.addWidget(dot)
         db_layout.addWidget(status_txt)
         s_layout.addWidget(db_badge)
