@@ -1,80 +1,123 @@
-# NAS Daily Needs - Store Billing & Inventory Management System
+# NAS Daily Needs - Store Billing, Inventory & Analytics System
 
-A Python and MySQL-based inventory, customer management, and retail billing system designed for grocery and daily-needs stores.
-
-## Features
-
-- **Product Management**: View product list, add new items with custom product IDs, and remove items.
-- **Customer Registration**: Maintain customer database with 10-digit mobile numbers, names, and delivery addresses.
-- **Dynamic Cart & Billing**:
-  - Add items to cart interactively using Product IDs (PID).
-  - Calculate totals dynamically using floating-point prices.
-  - Record payment mode (`Cash`, `Card`, `UPI`, `PayLater`) and status (`Paid`, `Pending`).
-  - Generate a formatted store receipt on checkout.
-- **Customer Purchase History**: Look up any customer by phone number to see their profile and all past transaction bills.
-- **Auto-Initialization**: Automatically creates the database `counter` and all necessary tables (`products`, `buyer`, `bill`) on first run if they don't already exist.
+A comprehensive Python and MySQL-based Retail Point of Sale (POS), Inventory Control, and Customer Management System designed for daily-needs and grocery stores.
 
 ---
 
-## Prerequisites
+## 🌟 Key Features & Improvisations
 
-1. **Python 3.x**
-2. **MySQL Server** running locally (or remote)
-3. Python MySQL connector library:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 1. Inventory & Stock Management
+- **Live Stock Tracking**: Each product tracks available stock quantity. Stock is automatically decremented upon billing.
+- **Stock Warnings**: Automatic indicators for `Available`, `LOW STOCK! (<= 5 units)`, and `OUT OF STOCK (0)`.
+- **Search Capabilities**: Find products instantly by name or PID using partial matching.
+- **Product Editing & Restocking**: Easily change prices, add fresh stock shipments, or update product names without re-creating records.
+
+### 2. Point of Sale (POS) & Billing
+- **Quantity Support**: Add items to cart with custom quantities (e.g., 3x Milk, 2x Bread) without repeating product entry.
+- **Stock Validation**: Prevents cashiers from selling more items than are physically in stock.
+- **Auto-Generated Bill Numbers**: Automatically suggests the next sequential Bill Number (`MAX(BillNo) + 1`), preventing duplicate key errors while allowing manual override.
+- **Itemized Bill History (`bill_items`)**: Every item, quantity, unit price, and subtotal is saved permanently, allowing full reprinting of any past invoice.
+- **Multiple Payment Modes**: Supports `Cash`, `UPI`, `Card`, and `PayLater` with `Paid` or `Pending` statuses.
+
+### 3. Customer Management & Purchase Tracking
+- **Customer Directory**: Validates and stores 10-digit mobile numbers with customer names and addresses.
+- **Purchase History**: View lifetime spend, total bill count, and individual past transactions for any customer.
+- **Invoice Reprint**: View and reprint the complete receipt for any past bill.
+
+### 4. Business Analytics & Reports
+- **Daily Sales Dashboard**: Displays today's bill count and revenue.
+- **Lifetime Revenue & Metrics**: Lifetime revenue and sales volume.
+- **Pending Dues Tracker**: Lists all customers with unpaid / pending tabs.
+- **Low Stock Alerts**: Identifies inventory needing restock.
+- **Top 5 Best-Selling Products**: Highlights top-performing items by sales volume and revenue.
 
 ---
 
-## Database Configuration
+## 🗄️ Database Architecture
 
-By default, the script connects to `localhost` with user `root`. Adjust credentials in `NASDailyneeds.py` if your MySQL password differs:
+The system uses a normalized relational schema in MySQL:
 
-```python
-shop = n1.connect(host="localhost", user="root", passwd="YOUR_PASSWORD")
+```
+[ products ]
+  ├── PID (VARCHAR(10), Primary Key)
+  ├── PName (VARCHAR(50))
+  ├── Price (FLOAT)
+  └── stock (INT)
+
+[ buyer ]
+  ├── mobile (BIGINT, Primary Key)
+  ├── name (VARCHAR(100))
+  └── address (VARCHAR(255))
+
+[ bill ]
+  ├── BillNo (INT, Primary Key)
+  ├── mobile (BIGINT, Foreign Reference)
+  ├── date (DATE)
+  ├── mode (VARCHAR(30))
+  ├── status (VARCHAR(30))
+  └── total (FLOAT)
+
+[ bill_items ]
+  ├── id (INT, Primary Key, Auto Increment)
+  ├── BillNo (INT, Indexed)
+  ├── PID (VARCHAR(10))
+  ├── PName (VARCHAR(50))
+  ├── price (FLOAT)
+  ├── quantity (INT)
+  └── item_total (FLOAT)
 ```
 
-To manually initialize the database with sample products and customers, you can also run:
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Python 3.8+
+- MySQL Server 8.0+
+- `mysql-connector-python`
+
+Install dependencies:
 ```bash
-mysql -u root -p < schema.sql
+pip install -r requirements.txt
 ```
 
----
+### Configuration
+Credentials can be configured via environment variables or use the default local configuration:
+- `MYSQL_HOST` (default: `localhost`)
+- `MYSQL_USER` (default: `root`)
+- `MYSQL_PASSWORD` (default: `saini`)
+- `MYSQL_DATABASE` (default: `counter`)
 
-## How to Run
-
-Run the main application script:
-
+### Running the App
 ```bash
 python NASDailyneeds.py
 ```
 
-### Main Menu Options
-
-```text
-===================================
-             MENU
-===================================
-1. Add New Product
-2. View Available Products
-3. Remove Existing Product
-4. Billing
-5. New Customer
-6. Customer Details
-7. Exit
-===================================
-```
-
 ---
 
-## Project Structure
+## 📋 System Menu
 
 ```text
-NAS-Daily-Needs/
-├── NASDailyneeds.py   # Main Python CLI application
-├── schema.sql         # SQL schema definition and sample data
-├── requirements.txt   # Python dependencies
-├── .gitignore         # Git ignore rules
-└── README.md          # Project documentation
+==================================================
+             NAS DAILY NEEDS - MAIN MENU
+==================================================
+  [INVENTORY MANAGEMENT]
+   1. View All Products (Stock & Prices)
+   2. Search Product (by Name or PID)
+   3. Add New Product
+   4. Update Product (Price / Restock / Name)
+   5. Remove Product
+
+  [BILLING & POS]
+   6. New Bill / Checkout
+   7. View / Reprint Bill by Bill No
+
+  [CUSTOMERS & ANALYTICS]
+   8. Register / Update Customer
+   9. Customer Details & Purchase History
+  10. Business Analytics & Daily Sales Report
+
+  [SYSTEM]
+  11. Exit System
+==================================================
 ```
