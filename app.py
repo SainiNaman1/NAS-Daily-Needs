@@ -55,7 +55,7 @@ QWidget {
     color: #94a3b8;
     padding: 0px 5px 15px 5px;
 }
-QPushButton.NavBtn {
+QPushButton.NavBtn, QPushButton[class="NavBtn"] {
     background-color: transparent;
     color: #cbd5e1;
     font-size: 14px;
@@ -66,11 +66,11 @@ QPushButton.NavBtn {
     border-radius: 8px;
     margin: 4px 10px;
 }
-QPushButton.NavBtn:hover {
+QPushButton.NavBtn:hover, QPushButton[class="NavBtn"]:hover {
     background-color: #334155;
     color: #ffffff;
 }
-QPushButton.NavBtn:checked {
+QPushButton.NavBtn:checked, QPushButton[class="NavBtn"]:checked {
     background-color: #2563eb;
     color: #ffffff;
     font-weight: bold;
@@ -80,43 +80,43 @@ QPushButton.NavBtn:checked {
 #ContentArea {
     background-color: #0f172a;
 }
-QFrame.Card {
+QFrame.Card, QFrame[class="Card"] {
     background-color: #1e293b;
     border: 1px solid #334155;
     border-radius: 10px;
     padding: 14px;
 }
-QFrame.KPICard {
+QFrame.KPICard, QFrame[class="KPICard"] {
     background-color: #1e293b;
     border: 1px solid #334155;
     border-radius: 10px;
     padding: 16px;
 }
-QLabel.KPITitle {
+QLabel.KPITitle, QLabel[class="KPITitle"] {
     font-size: 12px;
     font-weight: 600;
     color: #94a3b8;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-QLabel.KPIValue {
+QLabel.KPIValue, QLabel[class="KPIValue"] {
     font-size: 24px;
     font-weight: bold;
     color: #ffffff;
     margin-top: 4px;
 }
-QLabel.KPISubtext {
+QLabel.KPISubtext, QLabel[class="KPISubtext"] {
     font-size: 11px;
     color: #38bdf8;
 }
 
 /* Headings */
-QLabel.PageTitle {
+QLabel.PageTitle, QLabel[class="PageTitle"] {
     font-size: 20px;
     font-weight: bold;
     color: #f8fafc;
 }
-QLabel.SectionTitle {
+QLabel.SectionTitle, QLabel[class="SectionTitle"] {
     font-size: 15px;
     font-weight: 600;
     color: #e2e8f0;
@@ -147,7 +147,7 @@ QTableWidget {
     selection-color: #ffffff;
 }
 QTableWidget::item {
-    padding: 8px;
+    padding: 4px 8px;
 }
 QTableWidget::item:hover {
     background-color: #334155;
@@ -163,19 +163,19 @@ QHeaderView::section {
 }
 
 /* Action Buttons */
-QPushButton.PrimaryBtn {
+QPushButton.PrimaryBtn, QPushButton[class="PrimaryBtn"] {
     background-color: #2563eb;
     color: #ffffff;
     font-size: 13px;
     font-weight: 600;
-    padding: 8px 16px;
+    padding: 6px 14px;
     border: none;
     border-radius: 6px;
 }
-QPushButton.PrimaryBtn:hover {
+QPushButton.PrimaryBtn:hover, QPushButton[class="PrimaryBtn"]:hover {
     background-color: #1d4ed8;
 }
-QPushButton.SuccessBtn {
+QPushButton.SuccessBtn, QPushButton[class="SuccessBtn"] {
     background-color: #10b981;
     color: #ffffff;
     font-size: 14px;
@@ -184,40 +184,62 @@ QPushButton.SuccessBtn {
     border: none;
     border-radius: 8px;
 }
-QPushButton.SuccessBtn:hover {
+QPushButton.SuccessBtn:hover, QPushButton[class="SuccessBtn"]:hover {
     background-color: #059669;
 }
-QPushButton.DangerBtn {
+QPushButton.DangerBtn, QPushButton[class="DangerBtn"] {
     background-color: #ef4444;
     color: #ffffff;
     font-size: 13px;
     font-weight: 600;
-    padding: 8px 16px;
+    padding: 6px 14px;
     border: none;
     border-radius: 6px;
 }
-QPushButton.DangerBtn:hover {
+QPushButton.DangerBtn:hover, QPushButton[class="DangerBtn"]:hover {
     background-color: #dc2626;
 }
-QPushButton.SecondaryBtn {
+QPushButton.SecondaryBtn, QPushButton[class="SecondaryBtn"] {
     background-color: #334155;
     color: #f8fafc;
     font-size: 13px;
     font-weight: 500;
-    padding: 8px 14px;
+    padding: 6px 12px;
     border: none;
     border-radius: 6px;
 }
-QPushButton.SecondaryBtn:hover {
+QPushButton.SecondaryBtn:hover, QPushButton[class="SecondaryBtn"]:hover {
     background-color: #475569;
 }
 
 /* Badges */
-QLabel.BadgeInStock {
+QLabel.BadgeInStock, QLabel[class="BadgeInStock"] {
     background-color: rgba(16, 185, 129, 0.2);
     color: #10b981;
     border: 1px solid #10b981;
     border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+QLabel.BadgeLowStock, QLabel[class="BadgeLowStock"] {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid #f59e0b;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+QLabel.BadgeOutOfStock, QLabel[class="BadgeOutOfStock"] {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid #ef4444;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
     padding: 2px 6px;
     font-size: 11px;
     font-weight: 600;
@@ -526,6 +548,11 @@ class POSView(QWidget):
         self.prod_table.setColumnCount(5)
         self.prod_table.setHorizontalHeaderLabels(["PID", "Product Name", "Price (Rs)", "Stock", "Action"])
         self.prod_table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        self.prod_table.setColumnWidth(0, 75)
+        self.prod_table.setColumnWidth(2, 95)
+        self.prod_table.setColumnWidth(3, 75)
+        self.prod_table.setColumnWidth(4, 110)
+        self.prod_table.verticalHeader().setDefaultSectionSize(44)
         self.prod_table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.prod_table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         self.prod_table.doubleClicked.connect(self.on_table_double_clicked)
@@ -567,8 +594,10 @@ class POSView(QWidget):
         # Cart Table
         self.cart_table = QTableWidget()
         self.cart_table.setColumnCount(5)
-        self.cart_table.setHorizontalHeaderLabels(["Item", "Price", "Qty", "Total", ""])
+        self.cart_table.setHorizontalHeaderLabels(["Item", "Price", "Qty", "Total", "Action"])
         self.cart_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        self.cart_table.setColumnWidth(4, 75)
+        self.cart_table.verticalHeader().setDefaultSectionSize(40)
         self.cart_table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         right_layout.addWidget(self.cart_table)
 
@@ -662,11 +691,35 @@ class POSView(QWidget):
             self.prod_table.setItem(row, 2, price_item)
             self.prod_table.setItem(row, 3, stock_item)
 
+            # Action button inside layout container for perfect sizing
+            btn_container = QWidget()
+            btn_layout = QHBoxLayout(btn_container)
+            btn_layout.setContentsMargins(4, 2, 4, 2)
+
             add_btn = QPushButton("+ Add")
-            add_btn.setProperty("class", "PrimaryBtn")
+            add_btn.setMinimumHeight(28)
+            add_btn.setStyleSheet("""
+                QPushButton {
+                    background-color: #2563eb;
+                    color: #ffffff;
+                    font-size: 12px;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 5px;
+                    padding: 4px 10px;
+                }
+                QPushButton:hover {
+                    background-color: #1d4ed8;
+                }
+                QPushButton:disabled {
+                    background-color: #334155;
+                    color: #64748b;
+                }
+            """)
             add_btn.setEnabled(p['stock'] > 0)
             add_btn.clicked.connect(lambda checked, prod=p: self.add_to_cart(prod))
-            self.prod_table.setCellWidget(row, 4, add_btn)
+            btn_layout.addWidget(add_btn)
+            self.prod_table.setCellWidget(row, 4, btn_container)
 
     def filter_products(self, text):
         self.load_products(text.strip())
@@ -736,17 +789,35 @@ class POSView(QWidget):
             qty_layout.addWidget(qty_lbl)
             qty_layout.addWidget(plus_btn)
 
-            # Delete button
+            # Delete button container
+            del_container = QWidget()
+            del_layout = QHBoxLayout(del_container)
+            del_layout.setContentsMargins(4, 2, 4, 2)
+
             del_btn = QPushButton("✕")
-            del_btn.setFixedSize(24, 24)
-            del_btn.setProperty("class", "DangerBtn")
+            del_btn.setFixedSize(26, 26)
+            del_btn.setToolTip("Remove from cart")
+            del_btn.setStyleSheet("""
+                QPushButton {
+                    background-color: #ef4444;
+                    color: #ffffff;
+                    font-size: 13px;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 4px;
+                }
+                QPushButton:hover {
+                    background-color: #dc2626;
+                }
+            """)
             del_btn.clicked.connect(lambda checked, idx=row: self.remove_item(idx))
+            del_layout.addWidget(del_btn)
 
             self.cart_table.setItem(row, 0, name_item)
             self.cart_table.setItem(row, 1, price_item)
             self.cart_table.setCellWidget(row, 2, qty_widget)
             self.cart_table.setItem(row, 3, tot_item)
-            self.cart_table.setCellWidget(row, 4, del_btn)
+            self.cart_table.setCellWidget(row, 4, del_container)
 
         self.total_val_lbl.setText(f"Rs. {grand_total:.2f}")
 
@@ -879,6 +950,7 @@ class InventoryView(QWidget):
         self.table.setColumnCount(6)
         self.table.setHorizontalHeaderLabels(["PID", "Product Name", "Unit Price (Rs)", "Stock", "Inventory Value", "Status"])
         self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        self.table.verticalHeader().setDefaultSectionSize(42)
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         card_layout.addWidget(self.table)
@@ -1000,6 +1072,7 @@ class CustomerCRMView(QWidget):
         self.cust_table.setColumnCount(5)
         self.cust_table.setHorizontalHeaderLabels(["Name", "Mobile", "Address", "Lifetime Spend", "Pending Due"])
         self.cust_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        self.cust_table.verticalHeader().setDefaultSectionSize(42)
         self.cust_table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.cust_table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         self.cust_table.itemSelectionChanged.connect(self.on_customer_selected)
@@ -1018,6 +1091,7 @@ class CustomerCRMView(QWidget):
         self.bills_table.setColumnCount(5)
         self.bills_table.setHorizontalHeaderLabels(["Bill #", "Date", "Mode", "Status", "Total (Rs)"])
         self.bills_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
+        self.bills_table.verticalHeader().setDefaultSectionSize(40)
         self.bills_table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.bills_table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         hist_layout.addWidget(self.bills_table)
